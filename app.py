@@ -117,7 +117,6 @@ st.session_state.pack_price = price
 
 
 
-
 col1, col2 = st.columns(2)
 
 with col1:
@@ -125,7 +124,7 @@ with col1:
         if st.button("🚭 금연 시작"):
             start()
     else:
-        st.button("📊 진행 중", disabled=True)
+        st.button("📊 진행 상황 확인")
 
 with col2:
     if st.button("초기화"):
