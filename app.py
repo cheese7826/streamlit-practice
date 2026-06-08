@@ -149,7 +149,12 @@ if page == "🚭 금연":
 
 
 
-
+    level = 0
+    title_rank = "🐣 입문자"
+    remaining = 0
+    seconds = 0
+    cig_count = 0
+    money = 0
 
 
 
@@ -166,9 +171,7 @@ if page == "🚭 금연":
 
         cig_count = int(seconds / (86400 / st.session_state.daily_cigarettes))
     # ⭐ 레벨 시스템
-        level = 0
-        title_rank = "🐣 금연 입문자"
-        remaining = 0
+
         level = cig_count // 30
         if level >= 30:
             title_rank = "👑 비흡연자"
