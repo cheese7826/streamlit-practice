@@ -117,14 +117,26 @@ st.session_state.pack_price = price
 
 col1, col2 = st.columns(2)
 
+col1, col2 = st.columns(2)
+
 with col1:
-    if st.button("금연 시작"):
-        start()
+    if not st.session_state.running:
+        if st.button("🚭 금연 시작"):
+            start()
+    else:
+        st.button("📊 진행 상황 확인", disabled=True)
 
 with col2:
     if st.button("초기화"):
         reset()
 
+# -----------------------------
+# 🔥 상태 표시 (추가된 부분)
+# -----------------------------
+if st.session_state.running:
+    st.success("🚭 금연 진행 중입니다")
+else:
+    st.info("🚭 시작 버튼을 눌러주세요")
 
 # -----------------------------
 # 시간 계산
