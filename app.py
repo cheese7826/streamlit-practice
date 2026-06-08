@@ -5,7 +5,7 @@ import os
 import math
 
 FILE = "quit_smoking_data.json"
-st.markdown("🔥 담배랑 술 생각 안!")
+st.markdown("담배랑 술 냄새 좀 없애자!")
 st.link_button("금연 상담-->금연길라잡이 홈페이지", "https://www.nosmokeguide.go.kr/")
 st.link_button("금주 상담-->금주클리닉센터 홈페이지", "https://mhsmindkorea2.kr/main/index.html")
 
