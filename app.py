@@ -6,6 +6,12 @@ import math
 
 FILE = "quit_smoking_data.json"
 st.markdown("🔥 너 지금도 잘하고 있어!")
+st.link_button("🔥 응원 받으러 가기", "https://www.nosmokeguide.go.kr/")
+
+
+
+
+
 # -----------------------------
 # 데이터 로드 / 저장
 # -----------------------------
