@@ -7,7 +7,11 @@ import math
 FILE = "quit_smoking_data.json"
 st.markdown("🔥 너 지금도 잘하고 있어!")
 st.link_button("금연 상담-->금연길라잡이 홈페이지", "https://www.nosmokeguide.go.kr/")
-st.markdown("금연은 신체와 정신 건강에 긍정적인 영향을 미치며, 심혈관 건강 개선, 폐 기능 향상, 암 위험 감소 등의 효과를 가져옵니다.")
+st.link_button("금주 상담-->금주클리닉센터 홈페이지", "https://mhsmindkorea2.kr/main/index.html")
+
+
+
+st.markdown("흡연과 음주는 신체와 정신 건강에 긍정적인 영향을 미치며, 심혈관 건강 개선, 폐 기능 향상, 암 위험 감소 등의 효과를 가져옵니다.")
 
 
 
@@ -308,7 +312,7 @@ elif page == "🍺 금주":
         elif level >= 10:
             title_rank = "💎 절주 전문가"
         elif level >= 5:
-            title_rank = "🔥 절제 성장 중"
+            title_rank = "🔥 절제력 성장 중"
         elif level >= 1:
             title_rank = "🍺 금주 시작 단계"
         else:
