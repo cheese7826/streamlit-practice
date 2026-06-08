@@ -60,7 +60,7 @@ if "init" not in st.session_state:
 # -----------------------------
 # 자동 새로고침 (1초)
 # -----------------------------
-st.autorefresh(interval=1000, key="refresh")
+#st.autorefresh(interval=1000, key="refresh")
 
 
 # -----------------------------
