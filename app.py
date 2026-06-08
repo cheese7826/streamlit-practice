@@ -5,7 +5,8 @@ import os
 import math
 
 FILE = "quit_smoking_data.json"
-
+if "page" not in st.session_state:
+    st.session_state.page = "idle"  # idle / running
 # -----------------------------
 # 데이터 로드 / 저장
 # -----------------------------
@@ -85,6 +86,7 @@ def start():
     st.session_state.running = True
     st.session_state.start_time = datetime.now()
     save_data()
+    st.session_state.page = "running"
 
 
 def reset():
@@ -92,6 +94,7 @@ def reset():
     st.session_state.start_time = None
     st.session_state.best_seconds = 0
     save_data()
+    st.session_state.page = "idle"
 
 
 # -----------------------------
@@ -120,21 +123,31 @@ st.session_state.pack_price = price
 col1, col2 = st.columns(2)
 
 with col1:
-    if not st.session_state.running:
-        if st.button("🚭 금연 시작"):
-            start()
-    else:
+    if st.button("🚭 금연 시작"):
+        start()
+        st.session_state.page = "running"
+
+    if st.session_state.page == "running":
         st.button("📊 진행 상황 확인")
 
 with col2:
     if st.button("초기화"):
         reset()
+        st.session_state.page = "idle"
 
-# 🔥 상태 표시 (진짜 핵심)
-if st.session_state.running:
+if st.session_state.page == "running":
     st.success("🚭 금연 진행 중입니다")
 else:
     st.info("🚭 시작 버튼을 눌러주세요")
+
+
+
+
+
+
+
+
+
 
 
 
