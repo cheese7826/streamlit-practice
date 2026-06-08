@@ -205,7 +205,7 @@ if page == "🚭 금연":
     st.metric("🚭 금연 일수", f"{seconds // 86400}일")
     st.metric("🚬 안 피운 담배", f"{cig_count:,}개비")
     st.metric("💰 절약 금액", f"{money:,}원")
-    
+
     st.metric("⭐ 레벨", f"{level} ({title_rank})")
     st.metric("🎯 다음 레벨까지", f"{remaining}개비")
 
@@ -272,16 +272,16 @@ elif page == "🍺 금주":
     # -----------------------------
     # 버튼
     # -----------------------------
-    col1, col2 = st.columns(2)
+    co1, co2 = st.columns(2)
 
-    with col1:
+    with co1:
         if not st.session_state.drink_running:
             if st.button("🍺 금주 시작"):
                 drink_start()
         else:
             st.button("📊 진행 상황 확인")
 
-    with col2:
+    with co2:
         if st.button("초기화"):
             drink_reset()
 
