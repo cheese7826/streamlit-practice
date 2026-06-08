@@ -160,6 +160,25 @@ if st.session_state.running and st.session_state.start_time:
         save_data()
 
     cig_count = int(seconds / (86400 / st.session_state.daily_cigarettes))
+    # ⭐ 레벨 시스템
+    level = cig_count // 30
+    if level >= 30:
+        title_rank = "👑 전설"
+    elif level >= 20:
+        title_rank = "🏆 마스터"
+    elif level >= 10:
+        title_rank = "💎 전문가"
+    elif level >= 7:
+        title_rank = "🔥 숙련자"
+    elif level >= 5:
+        title_rank = "💪 성장 중"
+    elif level >= 3:
+        title_rank = "🌱 적응 중"
+    elif level >= 1:
+        title_rank = "🚭 시작 단계"
+    else:
+        title_rank = "🐣 입문자"
+    remaining = 30 - (cig_count % 30)
     money = int(cig_count * (st.session_state.pack_price / 20))
 
 else:
@@ -176,6 +195,8 @@ st.metric("🚭 금연 일수", f"{seconds // 86400}일")
 st.metric("🚬 안 피운 담배", f"{cig_count:,}개비")
 st.metric("💰 절약 금액", f"{money:,}원")
 st.metric("🏆 최고 기록", format_time(st.session_state.best_seconds))
+st.metric("⭐ 레벨", f"{level} ({title_rank})")
+st.metric("🎯 다음 레벨까지", f"{remaining}개비")
 
 
 # -----------------------------
