@@ -204,15 +204,13 @@ st.metric("🎯 다음 레벨까지", f"{remaining}개비")
 # -----------------------------
 smoke = "💨 " * min(10, (seconds // 60) % 10)
 st.text(smoke)
-st.header("🚬 흡연의 해로움")
 st.image(
     "https://th.bing.com/th/id/R.2f04c18aaa3d89578c89e7f6b0a9d544?rik=a4t5AL4WsVgLDA&riu=http%3a%2f%2fimagescdn.gettyimagesbank.com%2f500%2f201907%2fjv11860534.jpg&ehk=3zoGbkgnXohr5FxhWO1FA9gtLtOHUNtvE39WeMeAJ%2f0%3d&risl=&pid=ImgRaw&r=0",
-    caption="흡연은 폐와 심혈관 건강에 심각한 영향을 줍니다",
+    caption="",
     use_container_width=True
 )
-st.header("🌿 금연의 효능")
 st.image(
     "https://www.insilicogen.com/blog/attach/1/1166224196.jpg",
-    caption="금연은 호흡기 건강과 체력 회복에 도움을 줍니다",
+    caption="",
     use_container_width=True
 )
