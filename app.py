@@ -5,13 +5,13 @@ import os
 import math
 
 FILE = "quit_smoking_data.json"
-st.markdown("담배랑 술 냄새 좀 없애자!")
+st.markdown("담배 냄새 좀 없애자!")
 st.link_button("금연 상담-->금연길라잡이 홈페이지", "https://www.nosmokeguide.go.kr/")
-st.link_button("금주 상담-->금주클리닉센터 홈페이지", "https://mhsmindkorea2.kr/main/index.html")
 
 
 
-st.markdown("금연과 금주는 신체와 정신 건강에 긍정적인 영향을 미치며, 심혈관 건강 개선, 폐 기능 향상, 암 위험 감소 등의 효과를 가져옵니다.")
+
+st.markdown("금연은 신체와 정신 건강에 긍정적인 영향을 미치며, 심혈관 건강 개선, 폐 기능 향상, 암 위험 감소 등의 효과를 가져옵니다.")
 
 
 
@@ -103,7 +103,7 @@ def reset():
     st.session_state.best_seconds = 0
     save_data()
 
-page = st.sidebar.radio("📌 메뉴", ["🚭 금연", "🍺 금주"])
+page = st.sidebar.radio("📌 메뉴", ["🚭 금연"])
 # -----------------------------
 # UI
 # -----------------------------
@@ -227,125 +227,3 @@ if page == "🚭 금연":
     )
 
 
-
-
-elif page == "🍺 금주":
-
-    st.title("🍺 금주 타이머")
-
-    # -----------------------------
-    # 입력
-    # -----------------------------
-    weekly_drink = st.number_input(
-        "일주일 술 소비량 (병)",
-        min_value=1,
-        value=st.session_state.get("weekly_drink", 7)
-    )
-
-    bottle_price = st.number_input(
-        "한 병 가격",
-        min_value=1,
-        value=st.session_state.get("bottle_price", 5000)
-    )
-
-    st.session_state.weekly_drink = weekly_drink
-    st.session_state.bottle_price = bottle_price
-
-    # -----------------------------
-    # 시작 시간
-    # -----------------------------
-    if "drink_running" not in st.session_state:
-        st.session_state.drink_running = False
-        st.session_state.drink_start = None
-        st.session_state.drink_best_seconds = 0
-
-    def drink_start():
-        if not st.session_state.drink_running:
-            st.session_state.drink_running = True
-            st.session_state.drink_start = datetime.now()
-
-    def drink_reset():
-        st.session_state.drink_running = False
-        st.session_state.drink_start = None
-        st.session_state.drink_best_seconds = 0
-
-    # -----------------------------
-    # 버튼
-    # -----------------------------
-    co1, co2 = st.columns(2)
-
-    with co1:
-        if not st.session_state.drink_running:
-            if st.button("🍺 금주 시작"):
-                drink_start()
-        else:
-            st.button("📊 진행 상황 확인")
-
-    with co2:
-        if st.button("초기화"):
-            drink_reset()
-
-    # -----------------------------
-    # 상태 표시
-    # -----------------------------
-    if st.session_state.drink_running:
-        st.success("🍺 금주 진행 중입니다")
-    else:
-        st.info("🍺 시작 버튼을 눌러주세요")
-
-    # -----------------------------
-    # 계산
-    # -----------------------------
-    if st.session_state.drink_running and st.session_state.drink_start:
-        elapsed = datetime.now() - st.session_state.drink_start
-        seconds = int(elapsed.total_seconds())
-
-        if seconds > st.session_state.drink_best_seconds:
-            st.session_state.drink_best_seconds = seconds
-
-        days = seconds // 86400
-
-        # 🍺 줄인 술 (주 기준 환산)
-        drink_saved = int((days * weekly_drink) / 7)
-
-        # ⭐ 레벨 (3병마다 업)
-        level = drink_saved // 3
-
-        if level >= 30:
-            title_rank = "👑 금주 마스터"
-        elif level >= 20:
-            title_rank = "🏆 술 컨트롤러"
-        elif level >= 10:
-            title_rank = "💎 절주 전문가"
-        elif level >= 5:
-            title_rank = "🔥 절제력 성장 중"
-        elif level >= 1:
-            title_rank = "🍺 금주 시작 단계"
-        else:
-            title_rank = "🐣 음주 조절 입문자"
-
-        remaining = 3 - (drink_saved % 3)
-        money = int(drink_saved * st.session_state.bottle_price)
-
-    else:
-        seconds = 0
-        days = 0
-        drink_saved = 0
-        level = 0
-        title_rank = "🐣 음주 조절 입문자"
-        remaining = 3
-        money = 0
-
-    # -----------------------------
-    # 출력
-    # -----------------------------
-    st.metric("⏱ 시간", f"{days}일")
-    st.metric("🍺 줄인 술", f"{drink_saved}병")
-    st.metric("💰 절약 금액", f"{money:,}원")
-    st.metric("⭐ 레벨", f"{level} ({title_rank})")
-    st.metric("🎯 다음 레벨까지", f"{remaining}병")
-
-    # -----------------------------
-    # 시각 효과
-    # -----------------------------
-    st.text("🍺 " * min(10, (seconds // 60) % 10))
