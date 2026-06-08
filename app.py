@@ -177,7 +177,7 @@ if st.session_state.running and st.session_state.start_time:
     elif level >= 1:
         title_rank = "🚭 금연 시작 단계"
     else:
-        title_rank = "🐣 입문자"
+        title_rank = "🐣 금연 입문자"
     remaining = 30 - (cig_count % 30)
     money = int(cig_count * (st.session_state.pack_price / 20))
 
@@ -204,3 +204,7 @@ st.metric("🎯 다음 레벨까지", f"{remaining}개비")
 # -----------------------------
 smoke = "💨 " * min(10, (seconds // 60) % 10)
 st.text(smoke)
+st.image([
+    "https://images.unsplash.com/photo-1505751172876-fa1923c5c528",
+    "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb"
+], caption=["🚭 시작", "💪 변화"], use_container_width=True)
