@@ -163,19 +163,19 @@ if st.session_state.running and st.session_state.start_time:
     # ⭐ 레벨 시스템
     level = cig_count // 30
     if level >= 30:
-        title_rank = "👑 전설"
+        title_rank = "👑 비흡연자"
     elif level >= 20:
-        title_rank = "🏆 마스터"
+        title_rank = "🏆 금연 마스터"
     elif level >= 10:
-        title_rank = "💎 전문가"
+        title_rank = "💎 금연 전문가"
     elif level >= 7:
-        title_rank = "🔥 숙련자"
+        title_rank = "🔥 슬슬 담배 없어도 익숙함"
     elif level >= 5:
-        title_rank = "💪 성장 중"
+        title_rank = "💪 인내력 성장 중"
     elif level >= 3:
-        title_rank = "🌱 적응 중"
+        title_rank = "🌱 담배 없는 삶에 적응 중"
     elif level >= 1:
-        title_rank = "🚭 시작 단계"
+        title_rank = "🚭 금연 시작 단계"
     else:
         title_rank = "🐣 입문자"
     remaining = 30 - (cig_count % 30)
