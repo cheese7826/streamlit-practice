@@ -1,9 +1,11 @@
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 from datetime import datetime
 import json
 import os
 import math
 
+st_autorefresh(interval=1000, key="refresh")
 FILE = "quit_smoking_data.json"
 
 # -----------------------------
